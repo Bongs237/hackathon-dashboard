@@ -2,23 +2,34 @@
 
 import Navbar from "@/components/matcher/Navbar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useMatcherAccessControl } from "@/hooks/useMatcherAccessControl";
 
 export default function Matches() {
+  const { canAccess, isLoading } = useMatcherAccessControl();
+
   // TODO: Replace with actual matched profiles from backend
   const MATCHED_PROFILES = [
     {
       id: "1",
       name: "Alice",
-      avatar: "vercel.svg",
+      avatar: "https://i.pravatar.cc/150?img=1",
       bio: "test 1",
     },
     {
       id: "2",
       name: "Bob",
-      avatar: "vercel.svg",
+      avatar: "https://i.pravatar.cc/150?img=2",
       bio: "test 2",
     },
   ];
+
+  if (isLoading) {
+    return null;
+  }
+
+  if (!canAccess) {
+    return null;
+  }
 
   return (
     <div className="flex flex-col min-h-screen">

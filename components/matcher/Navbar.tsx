@@ -18,8 +18,8 @@ export default function Navbar({ showMatches = true }: NavbarProps) {
         </Button>
       ) : (
         <Button variant="outline" asChild>
-          <Link href="/home">
-            Home
+          <Link href="/matcher">
+            Matchathon
           </Link>
         </Button>
       )}
